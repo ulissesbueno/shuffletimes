@@ -24,6 +24,7 @@ Route::get('/', function(){
 Route::get('/participantes', [ParticipanteController::class, 'getParticipantes']);
 Route::post('/shuffletime', [ParticipanteController::class, 'shuffleTime']);
 Route::post('/participantes/adicionar', [ParticipanteController::class, 'adicionarParticipante']);
+Route::delete('/participantes/reset', [ParticipanteController::class, 'reset']);
 
 
 

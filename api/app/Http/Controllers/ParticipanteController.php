@@ -24,7 +24,7 @@ class ParticipanteController extends Controller
         $participantes = Participante::all()->values();
 
         // Certificar-se de que há pelo menos um participante e o número de times é maior que 0
-        if ($participantes->isEmpty() || $numeroDeTimes <= 0) {
+        if ($participantes->isEmpty() || $numeroDeTimes <= 0 ) {
             return response()->json([
                 "error" => "Nenhum participante ou número de times inválido."
             ], Response::HTTP_I_AM_A_TEAPOT);
@@ -61,6 +61,16 @@ class ParticipanteController extends Controller
         $participante->nome = $request->input('nome');
         $participante->telefone = $request->input('telefone');
         $participante->save();
+
+        return response()->json([
+            "success" => true
+        ]);
+    }
+
+    public function reset(Request $request)
+    {
+        $participante = new Participante();
+        $participante->truncate();
 
         return response()->json([
             "success" => true
