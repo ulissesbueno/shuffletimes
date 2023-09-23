@@ -1,0 +1,26 @@
+version: "3"
+services:
+  shufletime-app:
+    container_name: app.shufletime
+    build:
+      context: .docker/
+    volumes:
+      - ./:/var/www/
+    networks:
+      - shufletime
+  shufletime-nginx:
+    container_name: nginx.shufletime
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - 8002:80
+    volumes:
+      - ./:/var/www/
+      - .docker/confs/nginx/:/etc/nginx/conf.d/
+    networks:
+      - shufletime
+    depends_on:
+      - shufletime-app
+networks:
+  shufletime:
+    driver: bridge
