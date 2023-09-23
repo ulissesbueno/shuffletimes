@@ -175,8 +175,10 @@ function GerarTabelaTimes(times, dataDoJogo) {
   thead.appendChild(trHeader);
   table.appendChild(thead);
 
+  let t = 1
   // Itera pelos times e seus participantes para preencher a tabela
   times.forEach(time => {
+       
       time.forEach(participante => {
           const tr = document.createElement('tr');
           const tdNome = document.createElement('td');
@@ -185,13 +187,14 @@ function GerarTabelaTimes(times, dataDoJogo) {
 
           tdNome.textContent = participante.nome;
           tdTelefone.textContent = participante.telefone;
-          tdTime.textContent = time[0].nome; // O nome do time é o mesmo para todos os participantes
-
+          tdTime.textContent = t; // O nome do time é o mesmo para todos os participantes
           tr.appendChild(tdNome);
           tr.appendChild(tdTelefone);
           tr.appendChild(tdTime);
           table.appendChild(tr);
       });
+
+      t ++
   });
 
   // Limpa o conteúdo atual da div #main e adiciona a data e a tabela de times
