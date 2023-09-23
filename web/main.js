@@ -134,7 +134,7 @@ function gerarTimes() {
   .then(response => response.json())
   .then(responseData => {
       // Verifica se a resposta da API indica sucesso
-      if (responseData.success) {
+      if (responseData) {
           // Chama a função GerarTabelaTimes com os dados dos times retornados pela API
           GerarTabelaTimes(responseData, dataDoJogo);
       } else {
