@@ -1,4 +1,4 @@
-const api = "http://api.shuffletime.devphp.com.br"
+const api = "https://api.shuffletime.devphp.com.br"
 
 function Participantes() {
   // Faz uma solicitação GET para a API
