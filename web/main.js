@@ -1,4 +1,4 @@
-const api = "http://localhost:8002"
+const api = "http://api.shuffletime.devphp.com.br"
 
 function Participantes() {
   // Faz uma solicitação GET para a API
