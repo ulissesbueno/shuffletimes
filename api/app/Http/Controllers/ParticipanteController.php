@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Participante;
+use Illuminate\Http\Response;
 
 class ParticipanteController extends Controller
 {
@@ -24,7 +25,9 @@ class ParticipanteController extends Controller
 
         // Certificar-se de que há pelo menos um participante e o número de times é maior que 0
         if ($participantes->isEmpty() || $numeroDeTimes <= 0) {
-            return redirect()->back()->with('error', 'Nenhum participante ou número de times inválido.');
+            return response()->json([
+                "error" => "Nenhum participante ou número de times inválido."
+            ], Response::HTTP_I_AM_A_TEAPOT);
         }
 
         // Embaralhar a ordem dos participantes
